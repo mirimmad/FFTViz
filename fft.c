@@ -1,6 +1,3 @@
-
-
-#include "common.h"
 #include "fft.h"
 
 
@@ -13,11 +10,18 @@ void PrintVector(complex double * v, int N) {
   printf("\n");
 }
 
-
+void printAValues(int * absolutes, int N) {
+  for (int i = 0; i < N; i++) {
+    printf("%d ", absolutes[i]);
+  }
+  printf("\n");
+}
 
 
 
 void FFT(int * sig, complex double * out, int N) {
+    //FFTAssert(0, "N must be greater than 0.");
+    if (N == 0) return;
     // N is assumed to be a power of two.
     if ( N == 1) {
         complex double p = sig[0] + 0i;
@@ -48,6 +52,15 @@ void FFT(int * sig, complex double * out, int N) {
     }
 
 
+}
+
+void dbScale(complex double * z, unsigned int * out, int N) {
+  // Calculate magnitude of the vectors and then
+  // convert each to dB scale.
+
+  for (int i = 0; i < N; i++) {
+    out[i] = 20 * log10((int) cabs(z[i]));
+  }
 }
 
 void test_FFT() {
