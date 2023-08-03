@@ -1,6 +1,6 @@
 #include "common.h"
 
-void printFrames(int * buffer, int Nframes) {
+void printSampleValues(int * buffer, int Nframes) {
 
     for (int i = 0; i < Nframes; i++) {
 		int sample = buffer[i];
