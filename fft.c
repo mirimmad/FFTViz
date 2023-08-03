@@ -69,9 +69,7 @@ void dbScale(complex double * z, float * out, int N) {
 }
 
 void test_FFT() {
-    // Write C code here
-    complex double x = 1 + 0i;
-   // printf("Hello world %f", creal(x));
+   
     float sig[8] = {5.0f,3.0f,2.0f,1.0f,-1.0f,-2.0f,-3.0f,-4.0f};
     int sig2[8] = {1, -1, 1, -1, 1, -1, 1, -1};
     int sig3[8] = {1,1,1,1,1,1,1,1};
