@@ -8,22 +8,19 @@
 static float currValues[1024];
 int frameCount = 0;
 static complex double currFFT[1024];
-
 static int channels;
-
 
 void AudioCallBack(void * buffer, unsigned int frames) {
 	float * samples = (float *) buffer;
-	float exponent = 1.0f;
 	float left;
 	float right;
 	frameCount = frames;
-	for (int frame = 0; frame < frames * 2; frame++) {
+	for (int frame = 0; frame < frames; frame++) {
 		left = samples[frame * 2 + 0];
 		right = samples[frame * 2 + 1];
-		//printf("%f %f", fabsf(left), fabsf(right));
+		//printf("%f ", fabsf(left));
 		currValues[frame] = left;
-	}
+	}	
 	
 	//printf("\n\n");
 }
@@ -73,15 +70,15 @@ int main() {
 			BarWidth = (float)screenWidth / frameCount;
 			for (int i = 0; i < frameCount; i++) {
 
-				printf("%f, ", cabs(currFFT[i]));
+				//printf("%f, ", cabs(currFFT[i])) * h/2;
 				float t = cabs(currFFT[i]);
-				
+				//if (!((i >=10 & i <= 400) && (h / 2 * t > 100) ))
 				DrawRectangle(i * BarWidth, h / 2 - h/2 * t, BarWidth,  h/2  * t, RAYWHITE);
-				//DrawRectangle(i * BarWidth, h / 2, BarWidth, h/2*t, RAYWHITE);
+				//DrawRectangle(i * BarWidth, h / 2 - t, BarWidth, t, RAYWHITE);
 			
 
 			}
-			printf("\n\n");
+			//printf("\n\n");
 
 			
 		}
